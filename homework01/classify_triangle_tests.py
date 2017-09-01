@@ -40,12 +40,12 @@ class ClassifyTriangleTests(unittest.TestCase):
     def testInvalidLength2(self):
         triangle_object = classify_triangle(7, 3, 2)
         self.assertEquals(triangle_object.message,
-                          'ERROR:Not valid values for length')
+                          'ERROR:Not valid values for Triangle')
 
     def testInvalidLength3(self):
         triangle_object = classify_triangle(2, 4, 2)
         self.assertEquals(triangle_object.message,
-                          'ERROR:Not valid values for length')
+                          'ERROR:Not valid values for Triangle')
 
     def testRight(self):
         triangle_object = classify_triangle(4, 5, 5)
