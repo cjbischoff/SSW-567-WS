@@ -15,6 +15,9 @@ __author__ = """Christopher Bischoff"""
 # scalene triangles have three sides with different lengths
 # right triangles have three sides with lengths, a, b, and c where a2 + b2 = c2
 
+from decimal import *
+getcontext().prec=30
+
 class classify_triangle:
     def __init__(self, x, y, z):
 
@@ -29,14 +32,21 @@ class classify_triangle:
             self.message = "ERROR:Not valid values for Triangle"
             return
 
-        if z ^ 2 == (x ^ 2 + y ^ 2):
-            self.message = "right"
-            return
-
+        # All Three sides equal
         if x == y and y == z:
             self.message = "equilateral"  # Three equal sides
             return
-        elif x == y or x == z or y == z:
+
+
+        sidesSquaredx = x*x
+        sidesSquaredy = y*y
+        sidesSquaredz = z*z
+
+        if (abs((z*z)- ((x*x) + (y*y)))) <= Decimal('0.012944'):
+            self.message =  "right"
+            return
+
+        if x == y or x == z or y == z:
             self.message = "isosceles"  # Two equal sides
             return
         elif (x != y) and (x != z) and (y != z):
@@ -45,9 +55,9 @@ class classify_triangle:
 
 if __name__ == '__main__':
     print("Input lengths of the triangle sides: ")
-    x = int(input("x: "))
-    y = int(input("y: "))
-    z = int(input("z: "))
+    x = Decimal(input("x: "))
+    y = Decimal(input("y: "))
+    z = Decimal(input("z: "))
 
     triangle = classify_triangle(x, y, z)
     print(triangle.message)
