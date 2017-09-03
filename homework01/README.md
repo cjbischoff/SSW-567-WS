@@ -22,7 +22,7 @@ Describe your experience with this assignment, specifically:
 
 I was not provide specific/clear requirements:
 
-- I was told to input parameters, but didn't  the requirements were not specific whether it would be integer or decimal parameter (I assumed integer).
+- I was told to input parameters, but didn't  the requirements were not specific whether it would be integer or decimal parameter (I account and test for decimal) .
 - I was not told to check for bad-data either improper length data or data that could not be a triangle (I created logic to test for that data and subsequent tests).
 - I received "mixed" requirements; equilateral, isosceles, and scalene are triangle classifications based upon the length of sides, but right (acute and obtuse) are triangle classification based upon angles. For example a triangle can be classified as  Right Isosceles. (I did not solve for the Right Triangle)
 
