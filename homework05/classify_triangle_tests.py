@@ -11,34 +11,50 @@ from classify_triangle import classify_triangle
 
 
 class ClassifyTriangleTests(unittest.TestCase):
+    def test_Equivalence_6(self):
+        """Equivalence Class T6"""
+        triangle_object = classify_triangle(2, 2, 2.82842712475)
+        self.assertEquals(triangle_object.message,
+                          'Right Isosceles Triangle')
+
+    def test_Equivalence_5(self):
+        """Equivalence Class T5"""
+        triangle_object = classify_triangle(10, 10, 5)
+        self.assertEquals(triangle_object.message,
+                          'Isosceles Triangle')
+
+    def test_Equivalence_3(self):
+        """Equivalence Class T3"""
+        triangle_object = classify_triangle(3, 4, 5)
+        self.assertEquals(triangle_object.message,
+                          'Right Scalene Triangle')
+
     def test_Boundary_1(self):
-        """Boundary Conditions T1"""
+        """Boundary Conditions T1 and Equivalence Class T4"""
         triangle_object = classify_triangle(1, 1, 1)
         self.assertEquals(triangle_object.message,
                           'Equilateral Triangle')
 
     def test_T1_1(self):
-        """Homework04 TestCase"""
-        """Boundary Conditions T2"""
+        """Homework04 TestCase and Boundary Conditions T2 and Equivalence T2"""
         triangle_object = classify_triangle(0, 1, 1)
         self.assertEquals(triangle_object.message,
                           'ERROR:All values must be greater than zero')
 
     def test_T1_2(self):
-        """Homework04 TestCase"""
+        """Homework04 TestCase and Boundary Conditions T3"""
         triangle_object = classify_triangle(1, 0, 1)
         self.assertEquals(triangle_object.message,
                           'ERROR:All values must be greater than zero')
 
     def test_T1_3(self):
-        """Homework04 TestCase"""
-        """Boundary Conditions T3"""
+        """Homework04 TestCase and Boundary Conditions T4"""
         triangle_object = classify_triangle(1, 1, 0)
         self.assertEquals(triangle_object.message,
                           'ERROR:All values must be greater than zero')
 
     def test_T2_1(self):
-        """Homework04 TestCase"""
+        """Homework04 TestCase and Boundary Conditions T5"""
         triangle_object = classify_triangle(1001, 1, 1)
         self.assertEquals(
             triangle_object.message,
@@ -59,7 +75,7 @@ class ClassifyTriangleTests(unittest.TestCase):
             'ERROR:All values must be less than 1000')
 
     def test_T4_1(self):
-        """Homework04 TestCase"""
+        """Homework04 TestCase and Boundary Conditions T6 and Equivalence T1"""
         triangle_object = classify_triangle(7, 3, 2)
         self.assertEquals(triangle_object.message,
                           'ERROR:Not valid values for Triangle')

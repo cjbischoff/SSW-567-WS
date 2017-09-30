@@ -32,12 +32,89 @@
 | T2        | 0      | 1      | 1      | Not Valid numbers    |
 | T3        | 1      | 0      | 1      | Not Valid numbers    |
 | T4        | 1      | 1      | 0      | Not Valid numbers    |
-| T5        | 1e-100 | 1e-100 | 1e-100 | Not Valid numbers    |
+| T5        | 1001   | 1      | 1      | Not Valid numbers    |
 | T6        | 7      | 3      | 2      | Not a Legal triangle |
 
 ## Part 2:  The test cases and test results that test those equivalence and boundary conditions;
-## Part 3:  Identify both your original test cases and new test cases that you created to meet the equivalence class, boundary conditions, and/or coverage tests.
 
+```
+❯❯❯ ./classify_triangle_tests.py                                                                                                                                                                                                                                    ✭ ✱ ◼ (git:create/homework05)
+........................
+----------------------------------------------------------------------
+Ran 24 tests in 0.001s
+```
+
+## Part 3:  Identify both your original test cases and new test cases that you created to meet the equivalence class, boundary conditions, and/or coverage tests.
+```
+def test_Equivalence_6(self):
+    """Equivalence Class T6"""
+    triangle_object = classify_triangle(2, 2, 2.82842712475)
+    self.assertEquals(triangle_object.message,
+                      'Right Isosceles Triangle')
+
+def test_Equivalence_5(self):
+    """Equivalence Class T5"""
+    triangle_object = classify_triangle(10, 10, 5)
+    self.assertEquals(triangle_object.message,
+                      'Isosceles Triangle')
+
+def test_Equivalence_3(self):
+    """Equivalence Class T3"""
+    triangle_object = classify_triangle(3, 4, 5)
+    self.assertEquals(triangle_object.message,
+                      'Right Scalene Triangle')
+
+def test_Boundary_1(self):
+    """Boundary Conditions T1 and Equivalence Class T4"""
+    triangle_object = classify_triangle(1, 1, 1)
+    self.assertEquals(triangle_object.message,
+                      'Equilateral Triangle')
+
+def test_T1_1(self):
+    """Homework04 TestCase and Boundary Conditions T2 and Equivalence T2"""
+    triangle_object = classify_triangle(0, 1, 1)
+    self.assertEquals(triangle_object.message,
+                      'ERROR:All values must be greater than zero')
+
+def test_T1_2(self):
+    """Homework04 TestCase and Boundary Conditions T3"""
+    triangle_object = classify_triangle(1, 0, 1)
+    self.assertEquals(triangle_object.message,
+                      'ERROR:All values must be greater than zero')
+
+def test_T1_3(self):
+    """Homework04 TestCase and Boundary Conditions T4"""
+    triangle_object = classify_triangle(1, 1, 0)
+    self.assertEquals(triangle_object.message,
+                      'ERROR:All values must be greater than zero')
+
+def test_T2_1(self):
+    """Homework04 TestCase and Boundary Conditions T5"""
+    triangle_object = classify_triangle(1001, 1, 1)
+    self.assertEquals(
+        triangle_object.message,
+        'ERROR:All values must be less than 1000')
+
+def test_T2_2(self):
+    """Homework04 TestCase"""
+    triangle_object = classify_triangle(1, 1001, 1)
+    self.assertEquals(
+        triangle_object.message,
+        'ERROR:All values must be less than 1000')
+
+def test_T2_3(self):
+    """Homework04 TestCase"""
+    triangle_object = classify_triangle(1, 1, 1001)
+    self.assertEquals(
+        triangle_object.message,
+        'ERROR:All values must be less than 1000')
+
+def test_T4_1(self):
+    """Homework04 TestCase and Boundary Conditions T6 and Equivalence T1"""
+    triangle_object = classify_triangle(7, 3, 2)
+    self.assertEquals(triangle_object.message,
+                      'ERROR:Not valid values for Triangle')
+```
 
 ## Part 4:  The name and output of the static code analyzer tool you used;
 
