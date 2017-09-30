@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # coding:utf-8
 
-"""SSW-567-WS: Homework 04: Requirements Testing"""
+"""SSW-567-WS: Homework 05 - Design and Unit Testing"""
 
-# Requirements Specification: “Write a function classify_triangle() that takes three
-# parameters: a, b, and c. The three parameters represent the lengths of the sides of a triangle.
-# The function returns a string that specifies whether the triangle is scalene, isosceles,
-# or equilateral, and whether it is a right triangle as well.”
+# Run a static code analyzer on your code, e.g. Pylint, identify and fix
+# any problems reported by the static code analyzer;
+# Run a code coverage tool on your code, e.g. Coverage.py, and extend
+# your test cases to demonstrate at least 80% code coverage;
 
 __author__ = """Christopher Bischoff"""
 
@@ -16,9 +16,11 @@ __author__ = """Christopher Bischoff"""
 # right triangles have three sides with lengths, a, b, and c where a2 + b2 = c2
 
 from decimal import *
-getcontext().prec=30
+getcontext().prec = 30
+
 
 class classify_triangle:
+    """This class determines type of triangle"""
     def __init__(self, x, y, z):
 
         # Checking values are greater than Zero
@@ -32,10 +34,10 @@ class classify_triangle:
             return
 
         # Checking values are real numbers i.e not complex
-        if (isinstance(x,complex ) or isinstance(y,complex ) or isinstance(z,complex )):
+        if (isinstance(x, complex) or isinstance(
+                y, complex) or isinstance(z, complex)):
             self.message = "ERROR:All values must be a real number"
             return
-
 
         # Side lengths do not adhere to the triangle inequality theorem.
         # which states that the sum of the side lengths of any 2 sides of a triangle
@@ -48,8 +50,8 @@ class classify_triangle:
         if x == y and y == z:
             self.message = "Equilateral Triangle"  # Three equal sides
             return
-            
-        if (abs((z*z)- ((x*x) + (y*y)))) <= Decimal('0.012944'):
+
+        if (abs((z * z) - ((x * x) + (y * y)))) <= Decimal('0.012944'):
             if x == y or x == z or y == z:
                 self.message = "Right Isosceles Triangle"  # Two equal sides
                 return
@@ -66,10 +68,10 @@ class classify_triangle:
 
 
 if __name__ == '__main__':
-    print("Input lengths of the triangle sides: ")
-    x = Decimal(input("A: "))
-    y = Decimal(input("B: "))
-    z = Decimal(input("C: "))
+    print 'Input lengths of the triangle sides: '
+    X = Decimal(input("A: "))
+    Y = Decimal(input("B: "))
+    Z = Decimal(input("C: "))
 
-    triangle = classify_triangle(x, y, z)
-    print(triangle.message)
+    triangle = classify_triangle(X, Y, Z)
+    print triangle.message
